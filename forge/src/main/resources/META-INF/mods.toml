@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://github.com/mahmudindev/mcmod-orenoevents/issues"
+license = "ARR"
+
+[[mods]]
+modId = "orenoevents"
+version = "${version}"
+displayName = "Oreno Events"
+authors = "mahmudindev"
+description = '''
+Unify and add new events across mod loader.
+'''
+logoFile = "assets/orenoevents/icon.png"
+
+[[dependencies.orenoevents]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.orenoevents]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
