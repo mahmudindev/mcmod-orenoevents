@@ -1,9 +1,11 @@
 package com.github.mahmudindev.mcmod.orenoevents.fabric.event;
 
 import com.github.mahmudindev.mcmod.orenoevents.OrenoEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.LifecycleEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.ServerEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.common.LifecycleEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.common.PlayerEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.common.ServerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +15,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 public class EventsFabric {
     public static void init() {
         EventsFabric.lifecycleEvents();
+        EventsFabric.playerEvents();
         EventsFabric.serverEvents();
     }
 
@@ -38,6 +41,14 @@ public class EventsFabric {
         ServerLifecycleEvents.SERVER_STOPPED.register(server -> {
             LifecycleEvents.SERVER_STOPPED.invoker(serverStopped -> {
                 serverStopped.onServerStopped(server);
+            });
+        });
+    }
+
+    private static void playerEvents() {
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            PlayerEvents.JOIN.invoker(join -> {
+                join.onJoin(handler.player);
             });
         });
     }

@@ -1,5 +1,6 @@
-package com.github.mahmudindev.mcmod.orenoevents.event;
+package com.github.mahmudindev.mcmod.orenoevents.event.common;
 
+import com.github.mahmudindev.mcmod.orenoevents.event.Event;
 import net.minecraft.server.MinecraftServer;
 
 public class LifecycleEvents {
