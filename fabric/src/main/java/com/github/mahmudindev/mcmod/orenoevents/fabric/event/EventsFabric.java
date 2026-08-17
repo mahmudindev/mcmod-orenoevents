@@ -14,9 +14,9 @@ import net.minecraft.server.packs.resources.ResourceManager;
 
 public class EventsFabric {
     public static void init() {
-        EventsFabric.lifecycleEvents();
-        EventsFabric.playerEvents();
-        EventsFabric.serverEvents();
+        lifecycleEvents();
+        playerEvents();
+        serverEvents();
     }
 
     private static void lifecycleEvents() {
@@ -49,6 +49,12 @@ public class EventsFabric {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             PlayerEvents.JOIN.invoker(join -> {
                 join.onJoin(handler.player);
+            });
+        });
+
+        ServerPlayConnectionEvents.DISCONNECT.register((handler, sender) -> {
+            PlayerEvents.DISCONNECT.invoker(disconnect -> {
+                disconnect.onDisconnect(handler.player);
             });
         });
     }

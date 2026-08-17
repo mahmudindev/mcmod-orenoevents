@@ -28,6 +28,15 @@ public class EventsForgeClient {
     }
 
     @SubscribeEvent
+    public void onClientPlayerJoin(ClientPlayerNetworkEvent.LoggingIn event) {
+        LocalPlayer player = event.getPlayer();
+
+        ClientPlayerEvents.JOIN.invoker(join -> {
+            join.onJoin(player);
+        });
+    }
+
+    @SubscribeEvent
     public void onClientPlayerDisconnect(ClientPlayerNetworkEvent.LoggingOut event) {
         LocalPlayer player = event.getPlayer();
 

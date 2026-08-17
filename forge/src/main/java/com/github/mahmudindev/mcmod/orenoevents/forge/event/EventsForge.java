@@ -59,6 +59,24 @@ public class EventsForge {
     }
 
     @SubscribeEvent
+    public void onServerPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+        Player entity = event.getEntity();
+
+        PlayerEvents.JOIN.invoker(join -> {
+            join.onJoin((ServerPlayer) entity);
+        });
+    }
+
+    @SubscribeEvent
+    public void onServerPlayerDisconnect(PlayerEvent.PlayerLoggedOutEvent event) {
+        Player entity = event.getEntity();
+
+        PlayerEvents.DISCONNECT.invoker(disconnect -> {
+            disconnect.onDisconnect((ServerPlayer) entity);
+        });
+    }
+
+    @SubscribeEvent
     public void onServerResourceManagerReload(AddReloadListenerEvent event) {
         event.addListener(new ResourceManagerReloadListener() {
             @Override
@@ -67,15 +85,6 @@ public class EventsForge {
                     serverResourceReload.onResourceManagerReload(resourceManager);
                 });
             }
-        });
-    }
-
-    @SubscribeEvent
-    public void onServerPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        Player entity = event.getEntity();
-
-        PlayerEvents.JOIN.invoker(join -> {
-            join.onJoin((ServerPlayer) entity);
         });
     }
 }
