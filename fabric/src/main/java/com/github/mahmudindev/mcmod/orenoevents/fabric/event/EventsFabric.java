@@ -1,9 +1,9 @@
 package com.github.mahmudindev.mcmod.orenoevents.fabric.event;
 
 import com.github.mahmudindev.mcmod.orenoevents.OrenoEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.common.LifecycleEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.common.PlayerEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.common.ServerEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.events.LifecycleEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.events.PlayerEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.events.ServerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;

@@ -1,9 +1,9 @@
-package com.github.mahmudindev.mcmod.orenoevents.event.client;
+package com.github.mahmudindev.mcmod.orenoevents.event.events;
 
 import com.github.mahmudindev.mcmod.orenoevents.event.Event;
 import net.minecraft.server.packs.resources.ResourceManager;
 
-public class ClientEvents {
+public class ServerEvents {
     public static final Event<ResourceManagerReload> RESOURCE_MANAGER_RELOAD = new Event<>();
 
     @FunctionalInterface

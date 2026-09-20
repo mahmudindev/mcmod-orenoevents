@@ -1,7 +1,7 @@
 package com.github.mahmudindev.mcmod.orenoevents.forge.client.event;
 
-import com.github.mahmudindev.mcmod.orenoevents.event.client.ClientEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.client.ClientPlayerEvents;
+import com.github.mahmudindev.mcmod.orenoevents.client.event.events.ClientEvents;
+import com.github.mahmudindev.mcmod.orenoevents.client.event.events.ClientPlayerEvents;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;

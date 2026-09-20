@@ -1,19 +1,19 @@
-package com.github.mahmudindev.mcmod.orenoevents.event.client;
+package com.github.mahmudindev.mcmod.orenoevents.event.events;
 
 import com.github.mahmudindev.mcmod.orenoevents.event.Event;
-import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.server.level.ServerPlayer;
 
-public class ClientPlayerEvents {
+public class PlayerEvents {
     public static final Event<Join> JOIN = new Event<>();
     public static final Event<Disconnect> DISCONNECT = new Event<>();
 
     @FunctionalInterface
     public interface Join {
-        void onJoin(LocalPlayer localPlayer);
+        void onJoin(ServerPlayer serverPlayer);
     }
 
     @FunctionalInterface
     public interface Disconnect {
-        void onDisconnect(LocalPlayer localPlayer);
+        void onDisconnect(ServerPlayer serverPlayer);
     }
 }

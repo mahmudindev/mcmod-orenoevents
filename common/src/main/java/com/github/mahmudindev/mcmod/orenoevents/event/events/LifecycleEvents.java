@@ -1,4 +1,4 @@
-package com.github.mahmudindev.mcmod.orenoevents.event.common;
+package com.github.mahmudindev.mcmod.orenoevents.event.events;
 
 import com.github.mahmudindev.mcmod.orenoevents.event.Event;
 import net.minecraft.server.MinecraftServer;

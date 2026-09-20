@@ -1,8 +1,8 @@
 package com.github.mahmudindev.mcmod.orenoevents.forge.event;
 
-import com.github.mahmudindev.mcmod.orenoevents.event.common.LifecycleEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.common.PlayerEvents;
-import com.github.mahmudindev.mcmod.orenoevents.event.common.ServerEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.events.LifecycleEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.events.PlayerEvents;
+import com.github.mahmudindev.mcmod.orenoevents.event.events.ServerEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
