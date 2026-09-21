@@ -22,7 +22,10 @@ public class EventsFabricClient {
                 .registerReloadListener(new SimpleSynchronousResourceReloadListener() {
                     @Override
                     public ResourceLocation getFabricId() {
-                        return new ResourceLocation(OrenoEvents.MOD_ID, "default");
+                        return ResourceLocation.fromNamespaceAndPath(
+                                OrenoEvents.MOD_ID,
+                                "default"
+                        );
                     }
 
                     @Override

@@ -1,4 +1,4 @@
-package com.github.mahmudindev.mcmod.orenoevents.forge.event;
+package com.github.mahmudindev.mcmod.orenoevents.neoforge.event;
 
 import com.github.mahmudindev.mcmod.orenoevents.event.events.LifecycleEvents;
 import com.github.mahmudindev.mcmod.orenoevents.event.events.PlayerEvents;
@@ -8,22 +8,21 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.server.ServerStartedEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.event.server.ServerStoppedEvent;
-import net.minecraftforge.event.server.ServerStoppingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 
-public class EventsForge {
-    public static void init() {
-        MinecraftForge.EVENT_BUS.register(new EventsForge());
-    }
+@EventBusSubscriber()
+public class EventsNeoForge {
+    public static void init() {}
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
+    public static void onServerStarting(ServerStartingEvent event) {
         MinecraftServer server = event.getServer();
 
         LifecycleEvents.SERVER_STARTING.invoker(serverStarting -> {
@@ -32,7 +31,7 @@ public class EventsForge {
     }
 
     @SubscribeEvent
-    public void onServerStarted(ServerStartedEvent event) {
+    public static void onServerStarted(ServerStartedEvent event) {
         MinecraftServer server = event.getServer();
 
         LifecycleEvents.SERVER_STARTED.invoker(serverStarted -> {
@@ -41,7 +40,7 @@ public class EventsForge {
     }
 
     @SubscribeEvent
-    public void onServerStopping(ServerStoppingEvent event) {
+    public static void onServerStopping(ServerStoppingEvent event) {
         MinecraftServer server = event.getServer();
 
         LifecycleEvents.SERVER_STOPPING.invoker(serverStopping -> {
@@ -50,7 +49,7 @@ public class EventsForge {
     }
 
     @SubscribeEvent
-    public void onServerStopped(ServerStoppedEvent event) {
+    public static void onServerStopped(ServerStoppedEvent event) {
         MinecraftServer server = event.getServer();
 
         LifecycleEvents.SERVER_STOPPED.invoker(serverStopped -> {
@@ -59,7 +58,7 @@ public class EventsForge {
     }
 
     @SubscribeEvent
-    public void onServerPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
+    public static void onServerPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
         Player entity = event.getEntity();
 
         PlayerEvents.JOIN.invoker(join -> {
@@ -68,7 +67,7 @@ public class EventsForge {
     }
 
     @SubscribeEvent
-    public void onServerPlayerDisconnect(PlayerEvent.PlayerLoggedOutEvent event) {
+    public static void onServerPlayerDisconnect(PlayerEvent.PlayerLoggedOutEvent event) {
         Player entity = event.getEntity();
 
         PlayerEvents.DISCONNECT.invoker(disconnect -> {
@@ -77,7 +76,7 @@ public class EventsForge {
     }
 
     @SubscribeEvent
-    public void onServerResourceManagerReload(AddReloadListenerEvent event) {
+    public static void onServerResourceManagerReload(AddReloadListenerEvent event) {
         event.addListener(new ResourceManagerReloadListener() {
             @Override
             public void onResourceManagerReload(ResourceManager resourceManager) {

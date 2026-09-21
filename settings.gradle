@@ -11,4 +11,4 @@ rootProject.name = 'orenoevents'
 
 include 'common'
 include 'fabric'
-include 'forge'
+include 'neoforge'

@@ -1,22 +1,21 @@
-package com.github.mahmudindev.mcmod.orenoevents.forge.client.event;
+package com.github.mahmudindev.mcmod.orenoevents.neoforge.client.event;
 
 import com.github.mahmudindev.mcmod.orenoevents.client.event.events.ClientEvents;
 import com.github.mahmudindev.mcmod.orenoevents.client.event.events.ClientPlayerEvents;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 
-public class EventsForgeClient {
-    public static void init() {
-        MinecraftForge.EVENT_BUS.register(new EventsForgeClient());
-    }
+@EventBusSubscriber()
+public class EventsNeoForgeClient {
+    public static void init() {}
 
     @SubscribeEvent
-    public void onClientResourceManagerReload(RegisterClientReloadListenersEvent event) {
+    public static void onClientResourceManagerReload(RegisterClientReloadListenersEvent event) {
         event.registerReloadListener(new ResourceManagerReloadListener() {
             @Override
             public void onResourceManagerReload(ResourceManager resourceManager) {
@@ -28,7 +27,7 @@ public class EventsForgeClient {
     }
 
     @SubscribeEvent
-    public void onClientPlayerJoin(ClientPlayerNetworkEvent.LoggingIn event) {
+    public static void onClientPlayerJoin(ClientPlayerNetworkEvent.LoggingIn event) {
         LocalPlayer player = event.getPlayer();
 
         ClientPlayerEvents.JOIN.invoker(join -> {
@@ -37,7 +36,7 @@ public class EventsForgeClient {
     }
 
     @SubscribeEvent
-    public void onClientPlayerDisconnect(ClientPlayerNetworkEvent.LoggingOut event) {
+    public static void onClientPlayerDisconnect(ClientPlayerNetworkEvent.LoggingOut event) {
         LocalPlayer player = event.getPlayer();
 
         ClientPlayerEvents.DISCONNECT.invoker(disconnect -> {
